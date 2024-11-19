@@ -47,16 +47,22 @@ const LANGUAGE_OPTIONS = [
   // Add more languages as needed
 ];
 
+
 const FREQUENCY_OPTIONS = [
   { label: 'Monthly', value: 'Monthly' },
+  { label: 'BiMonthly', value: 'BiMonthly' },
   { label: 'Quarterly', value: 'Quarterly' },
   { label: 'Annually', value: 'Annually' },
 ];
 
 const LICENSE_TYPE_OPTIONS = [
-  { label: 'Commercial', value: 'Commercial' },
-  { label: 'Personal', value: 'Personal' },
+  { label: 'CC BY-SA', value: 'CC BY-SA' },
+  { label: 'CC BY-NC', value: 'CC BY-NC' },
+  { label: 'CC BY-NC-SA', value: 'CC BY-NC-SA' },
+  { label: 'CC BY-ND', value: 'CC BY-ND' },
+  { label: 'CC BY-NC-ND', value: 'CC BY-NC-ND' },
 ];
+
 
 // ----------------------------------------------------------------------
 
@@ -367,15 +373,16 @@ export default function
                     <RHFEditor simple name="description" />
                   </Grid>
 
-                  <Grid item xs={12} sm={6}>
+                  {/* <Grid item xs={12} sm={6}>
                     <RHFSwitch name="NormalProcessing" label="Normal Processing" />
                     <RHFSwitch name="Fast-track / Priority Processing" label="Fast-track / Priority Processing" />
-                  </Grid>
-                  <Grid container spacing={2} justifyContent="flex-end">
+                  </Grid> */}
+                  <br/>
+                  <Grid container spacing={2} justifyContent="flex-end" style={{mt:2}}>
 
                     <Grid item>
                       <LoadingButton type="submit" variant="contained" size="large">
-                        {!isEdit ? 'Create Journal' : 'Save Changes'}
+                        {!isEdit ? 'Save' : 'Save Changes'}
                       </LoadingButton>
 
                     </Grid>
@@ -399,10 +406,9 @@ export default function
         </Grid>
       </FormProvider>
       <br />
-      <PricingPage />
       <Typography variant="subtitle1">
         If the journal is approved by the editorial committee of International Journal Indexing a confirmation email will be send to editor in chief. After
-        fulfilled all formalities, journal will receives indexing / IJIN factor certificate.
+        fulfilled all formalities, journal will receives indexing / IJIN Value certificate.
       </Typography>
     </>
   );

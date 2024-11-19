@@ -247,7 +247,7 @@ export default function Footer() {
                 component="div"
                 sx={{ textAlign: "justify", maxWidth: "250px" }} // Keeping the max width for readability
               >
-                International Journal Indexing (www.ijindexing.com) provides indexing to all types of E-Journal, P-Journal, and conference presentation articles/abstracts. We offer international visibility to research and provide impact factor (IJIN Impact Factor) to improve journal visibility in the research world.
+                International Journal Indexing (www.ijindexing.com) provides indexing to all types of E-Journal, P-Journal, and conference presentation articles/abstracts. We offer international visibility to research and provide IJIN Value to improve journal visibility in the research world.
               </Typography>
             </Stack>
           </Grid>

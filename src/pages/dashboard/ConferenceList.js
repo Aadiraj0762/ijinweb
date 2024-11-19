@@ -1,5 +1,5 @@
 import {
-    Card, CardContent, CardMedia,
+    Card, CardContent,CardMedia,
     Grid,
     Typography
 } from '@mui/material';
@@ -198,7 +198,7 @@ const PropertyTable = () => {
                     </Grid>
 
                     {/* Content on the right for larger screens, below image for smaller screens */}
-                    <Grid item xs={12} md={7}>
+                    <Grid item xs={12} md={12}>
                         <CardContent sx={{ flexGrow: 1 }}>
                             <Typography variant="h6" component="div" onClick={() => handleViewRow(journal.id)}>
                                 {journal.title}

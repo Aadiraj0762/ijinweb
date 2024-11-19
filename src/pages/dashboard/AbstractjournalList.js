@@ -1,6 +1,6 @@
 import {
     Box,
-    Card, CardContent, CardMedia,
+    Card, CardContent,
     Grid,
     Typography
 } from '@mui/material';
@@ -45,12 +45,12 @@ const AbstractTable = () => {
                     <Grid item xs={12} sm={6} md={6} key={abstract.id}>
                         <Card sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, minHeight: 250 }}>
                             {/* Image on the left (or top for small screens) */}
-                            <CardMedia
+                            {/* <CardMedia
                                 component="img"
                                 sx={{ width: { xs: '100%', md: 160 }, height: 250, objectFit: 'cover' }}
                                 image="https://api-prod-minimal-v610.pages.dev/assets/images/cover/cover-4.webp" // Replace with actual image source
                                 alt={abstract.title}
-                            />
+                            /> */}
                             
                             {/* Content on the right */}
                             <CardContent sx={{ flexGrow: 1 }}>

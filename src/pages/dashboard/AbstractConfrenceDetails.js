@@ -1,4 +1,4 @@
-import { Box, Card, Container, Divider, Grid, Typography } from '@mui/material';
+import { Box,Button, Card, Container, Divider, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import DOMPurify from 'dompurify';
 import PropTypes from 'prop-types';
@@ -20,17 +20,31 @@ const sanitizeAndFormatDescription = (description) => {
 };
 
 // Updated AbstractOverviewTab component
-const AbstractOverviewTab = ({ abstract }) => (
+const AbstractOverviewTab = ({ abstract,onShare }) => (
   <Card>
     <Box sx={{ p: 3, border: '1px solid #e0e0e0', borderRadius: '8px' }}>
+     {/* Share Button */}
+     <Button
+        variant="outlined"
+        sx={{
+          position: 'absolute',
+          top: 16,
+          right: 16,
+          fontSize: '0.9rem',
+          padding: '6px 12px',
+        }}
+        onClick={onShare}
+      >
+        Share
+      </Button>
       <Grid container spacing={1}>
         {/* Abstract Details */}
         <Grid item xs={12}>
           <Grid container spacing={1}>
             {abstract.title && (
               <Grid item xs={12}>
-                <Typography variant="h2">{abstract.title}</Typography>
-              </Grid>
+                <Typography variant="h5" sx={{ fontWeight: 'bold' }}>{abstract.title}</Typography>
+                </Grid>
             )}
             <Grid item xs={12}>
               <Divider sx={{ my: 2 }} />
@@ -38,43 +52,50 @@ const AbstractOverviewTab = ({ abstract }) => (
 
             {abstract.conferenceName && (
               <Grid item xs={12} md={6}>
-                <Typography><b>Conference Name:</b> {abstract.conferenceName}</Typography>
+                               <Typography sx={{ fontSize: '0.9rem' }}>
+                               <b>Conference Name:</b> {abstract.conferenceName}</Typography>
               </Grid>
             )}
 
             {abstract.issn && (
               <Grid item xs={12} md={6}>
-                <Typography><b>ISSN:</b> {abstract.issn}</Typography>
+                                <Typography sx={{ fontSize: '0.9rem' }}>
+                                <b>ISSN:</b> {abstract.issn}</Typography>
               </Grid>
             )}
 
             {abstract.publisher && (
               <Grid item xs={12} md={6}>
-                <Typography><b>Publisher:</b> {abstract.publisher}</Typography>
+                                <Typography sx={{ fontSize: '0.9rem' }}>
+                                <b>Publisher:</b> {abstract.publisher}</Typography>
               </Grid>
             )}
 
             {abstract.affiliation && (
               <Grid item xs={12} md={6}>
-                <Typography><b>Affiliation:</b> {abstract.affiliation}</Typography>
+                                <Typography sx={{ fontSize: '0.9rem' }}>
+                                <b>Affiliation:</b> {abstract.affiliation}</Typography>
               </Grid>
             )}
 
             {abstract.authorName && (
               <Grid item xs={12} md={6}>
-                <Typography><b>Author:</b> {abstract.authorName}</Typography>
+                               <Typography sx={{ fontSize: '0.9rem' }}>
+                               <b>Author:</b> {abstract.authorName}</Typography>
               </Grid>
             )}
 
             {abstract.articleType && (
               <Grid item xs={12} md={6}>
-                <Typography><b>Article Type:</b> {abstract.articleType}</Typography>
+                                <Typography sx={{ fontSize: '0.9rem' }}>
+                                <b>Article Type:</b> {abstract.articleType}</Typography>
               </Grid>
             )}
 
             {abstract.linkDOI && (
               <Grid item xs={12} md={6}>
-                <Typography><b>DOI Link:</b> <a href={abstract.linkDOI}>{abstract.linkDOI}</a></Typography>
+                                <Typography sx={{ fontSize: '0.9rem' }}>
+                                <b>DOI Link:</b> <a href={abstract.linkDOI}>{abstract.linkDOI}</a></Typography>
               </Grid>
             )}
 
@@ -85,8 +106,8 @@ const AbstractOverviewTab = ({ abstract }) => (
 
             {abstract.abstract && (
               <Grid item xs={12}>
-                <Typography style={{ textAlign: "justify" }}>
-                  <b>Abstract:</b>
+                <Typography sx={{ fontSize: '0.9rem', textAlign: 'justify' }}>
+                <b>Abstract:</b>
                   <span dangerouslySetInnerHTML={{ __html: sanitizeAndFormatDescription(abstract.abstract) }} />
                 </Typography>
               </Grid>
@@ -117,6 +138,8 @@ AbstractOverviewTab.propTypes = {
     linkDOI: PropTypes.string,
     assetFile: PropTypes.string,
   }).isRequired,
+  onShare: PropTypes.func.isRequired,
+
 };
 
 // Main component to fetch and display abstract details
@@ -144,6 +167,13 @@ export default function AbstractDetailsPage() {
     }
   }, [id]);
 
+  const handleShare = () => {
+    if (abstract) {
+      const subject = `Abstract: ${abstract.title}`;
+      const body = `Check out this abstract from the journal ${abstract.journalName}:\n\n${abstract.abstract}\n\nMore details: ${window.location.href}`;
+      window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+  };
   return (
     <>
       <Helmet>

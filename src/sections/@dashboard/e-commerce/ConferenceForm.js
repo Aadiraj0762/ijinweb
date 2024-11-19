@@ -277,7 +277,7 @@ export default function ConferenceForm({ isEdit, currentConference }) {
                         size="large"
                         loading={isSubmitting}
                       >
-                        {!isEdit ? 'Create Conference' : 'Save Changes'}
+                        {!isEdit ? 'Save' : 'Save Changes'}
                       </LoadingButton>
                     </Grid>
                     <Grid item>
@@ -298,11 +298,7 @@ export default function ConferenceForm({ isEdit, currentConference }) {
         </Grid>
       </FormProvider>
       <br />
-      <PricingPage />
-      <Typography variant="subtitle1">
-        If the journal is approved by the editorial committee of International Journal Indexing a confirmation email will be send to editor in chief. After
-        fulfilled all formalities, journal will receives indexing / IJIN factor certificate.
-      </Typography>
+      
     </>
   );
 }

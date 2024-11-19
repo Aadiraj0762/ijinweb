@@ -43,17 +43,17 @@ const AbstractTable = () => {
                 <Grid item xs={12}md={6} key={abstract.id}>
                     <Card sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, minHeight: 200 }}>
                         {/* Image Section */}
-                        <Grid item xs={12} md={4}>
+                        {/* <Grid item xs={12} md={4}>
                             <CardMedia
                                 component="img"
                                 sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 image={abstract.assetFile || "https://api-prod-minimal-v610.pages.dev/assets/images/cover/cover-4.webp"}
                                 alt={abstract.title}
                             />
-                        </Grid>
+                        </Grid> */}
 
                         {/* Content Section */}
-                        <Grid item xs={12} md={8}>
+                        <Grid item xs={12} md={12}>
                             <CardContent sx={{ flexGrow: 1, padding: '16px' }}>
                                 <Typography variant="h6" component="div" onClick={() => handleViewRow(abstract.id)} style={{ cursor: 'pointer' }}>
                                     {abstract.title}
